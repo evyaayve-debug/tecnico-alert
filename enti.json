@@ -1,0 +1,43 @@
+[
+  {
+    "nome": "Comune di Genova",
+    "url": "https://www.comune.genova.it",
+    "parole": [
+      "funzionario tecnico",
+      "architetto",
+      "lavori pubblici",
+      "manutenzione",
+      "patrimonio"
+    ]
+  },
+  {
+    "nome": "Città Metropolitana di Genova",
+    "url": "https://www.cittametropolitana.genova.it",
+    "parole": [
+      "funzionario tecnico",
+      "architetto",
+      "viabilità",
+      "edilizia"
+    ]
+  },
+  {
+    "nome": "ARTE Genova",
+    "url": "https://www.arte.ge.it",
+    "parole": [
+      "tecnico",
+      "architetto",
+      "manutenzione",
+      "patrimonio"
+    ]
+  },
+  {
+    "nome": "Agenzia del Demanio",
+    "url": "https://www.agenziademanio.it",
+    "parole": [
+      "tecnico",
+      "architetto",
+      "patrimonio",
+      "lavori"
+    ]
+  }
+]
