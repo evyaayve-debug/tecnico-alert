@@ -7,6 +7,7 @@ from datetime import datetime
 
 ENTI_FILE = "enti.json"
 SEEN_FILE = "seen.json"
+RISULTATI_FILE = "risultati.json"
 
 
 def carica_enti():
@@ -25,6 +26,9 @@ def salva_visti(dati):
     with open(SEEN_FILE, "w", encoding="utf-8") as f:
         json.dump(dati, f, indent=2, ensure_ascii=False)
 
+def salva_risultati(dati):
+    with open(RISULTATI_FILE, "w", encoding="utf-8") as f:
+        json.dump(dati, f, indent=2, ensure_ascii=False)
 
 def controlla_pagina(ente):
 
@@ -89,11 +93,13 @@ def main():
 
     print(f"Nuovi risultati: {len(nuovi)}")
 
-    for risultato in nuovi:
-        print(
-            risultato["ente"],
-            risultato["parole"]
-        )
+salva_risultati(nuovi)
+
+for risultato in nuovi:
+    print(
+        risultato["ente"],
+        risultato["parole"]
+    )
 
 
 if __name__ == "__main__":
