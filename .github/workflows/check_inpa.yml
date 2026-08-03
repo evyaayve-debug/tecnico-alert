@@ -25,3 +25,11 @@ jobs:
 
       - name: Avvia monitor
         run: python monitor.py
+
+      - name: Salva risultati
+        run: |
+          git config --global user.name "TecnicoAlert"
+          git config --global user.email "actions@github.com"
+          git add risultati.json
+          git commit -m "Aggiorna risultati" || echo "Nessuna modifica"
+          git push
