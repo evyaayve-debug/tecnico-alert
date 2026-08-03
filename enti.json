@@ -1,43 +1,38 @@
 [
   {
-    "nome": "Comune di Genova",
-    "url": "https://www.comune.genova.it",
-    "parole": [
-      "funzionario tecnico",
-      "architetto",
-      "lavori pubblici",
-      "manutenzione",
-      "patrimonio"
-    ]
-  },
-  {
-    "nome": "Città Metropolitana di Genova",
-    "url": "https://www.cittametropolitana.genova.it",
-    "parole": [
-      "funzionario tecnico",
-      "architetto",
-      "viabilità",
-      "edilizia"
-    ]
+    "nome": "Agenzia del Demanio",
+    "url": "https://www.agenziademanio.it/opencms/it/lavora-con-noi/"
   },
   {
     "nome": "ARTE Genova",
-    "url": "https://www.arte.ge.it",
-    "parole": [
-      "tecnico",
-      "architetto",
-      "manutenzione",
-      "patrimonio"
-    ]
+    "url": "https://www.arte.ge.it/amministrazione-trasparente/bandi-di-concorso/"
   },
   {
-    "nome": "Agenzia del Demanio",
-    "url": "https://www.agenziademanio.it",
-    "parole": [
-      "tecnico",
-      "architetto",
-      "patrimonio",
-      "lavori"
-    ]
+    "nome": "Comune di Genova",
+    "url": "https://smart.comune.genova.it/concorsi"
+  },
+  {
+    "nome": "Città Metropolitana di Genova",
+    "url": "https://www.cittametropolitana.genova.it/concorsi"
+  },
+  {
+    "nome": "Regione Liguria",
+    "url": "https://www.regione.liguria.it/homepage-bandi-e-avvisi/concorsi.html"
+  },
+  {
+    "nome": "Università di Genova",
+    "url": "https://unige.it/concorsi"
+  },
+  {
+    "nome": "Autorità Portuale",
+    "url": "https://www.portsofgenoa.com/it/amministrazione-trasparente/bandi-di-concorso.html"
+  },
+  {
+    "nome": "ANAS",
+    "url": "https://www.stradeanas.it/it/lavora-con-noi"
+  },
+  {
+    "nome": "RFI",
+    "url": "https://fscareers.gruppofs.it/"
   }
 ]
