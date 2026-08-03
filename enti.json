@@ -1,38 +1,47 @@
 [
   {
     "nome": "Agenzia del Demanio",
-    "url": "https://www.agenziademanio.it/opencms/it/lavora-con-noi/"
+    "url": "https://www.agenziademanio.it/opencms/it/lavora-con-noi/",
+    "parole": ["tecnico", "architetto", "patrimonio", "lavori", "ingegnere"]
   },
   {
     "nome": "ARTE Genova",
-    "url": "https://www.arte.ge.it/amministrazione-trasparente/bandi-di-concorso/"
+    "url": "https://www.arte.ge.it/amministrazione-trasparente/bandi-di-concorso/",
+    "parole": ["tecnico", "architetto", "manutenzione", "edilizia", "patrimonio"]
   },
   {
     "nome": "Comune di Genova",
-    "url": "https://smart.comune.genova.it/concorsi"
+    "url": "https://smart.comune.genova.it/concorsi",
+    "parole": ["tecnico", "architetto", "lavori pubblici", "edilizia", "urbanistica"]
   },
   {
     "nome": "Città Metropolitana di Genova",
-    "url": "https://www.cittametropolitana.genova.it/concorsi"
+    "url": "https://www.cittametropolitana.genova.it/concorsi",
+    "parole": ["tecnico", "architetto", "viabilità", "edilizia"]
   },
   {
     "nome": "Regione Liguria",
-    "url": "https://www.regione.liguria.it/homepage-bandi-e-avvisi/concorsi.html"
+    "url": "https://www.regione.liguria.it/homepage-bandi-e-avvisi/concorsi.html",
+    "parole": ["tecnico", "architetto", "ingegnere", "territorio"]
   },
   {
     "nome": "Università di Genova",
-    "url": "https://unige.it/concorsi"
+    "url": "https://unige.it/concorsi",
+    "parole": ["tecnico", "architetto", "edilizia"]
   },
   {
     "nome": "Autorità Portuale",
-    "url": "https://www.portsofgenoa.com/it/amministrazione-trasparente/bandi-di-concorso.html"
+    "url": "https://www.portsofgenoa.com/it/amministrazione-trasparente/bandi-di-concorso.html",
+    "parole": ["tecnico", "ingegnere", "manutenzione", "infrastrutture"]
   },
   {
     "nome": "ANAS",
-    "url": "https://www.stradeanas.it/it/lavora-con-noi"
+    "url": "https://www.stradeanas.it/it/lavora-con-noi",
+    "parole": ["tecnico", "ingegnere", "strade", "manutenzione"]
   },
   {
     "nome": "RFI",
-    "url": "https://fscareers.gruppofs.it/"
+    "url": "https://fscareers.gruppofs.it/",
+    "parole": ["tecnico", "ingegnere", "infrastrutture", "manutenzione"]
   }
 ]
