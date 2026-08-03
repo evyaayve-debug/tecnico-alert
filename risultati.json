@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "ente": "Comune di Genova",
+    "url": "https://smart.comune.genova.it/concorsi",
+    "parole": [
+      "architetto",
+      "edilizia",
+      "urbanistica"
+    ],
+    "data": "03/08/2026"
+  },
+  {
+    "ente": "Città Metropolitana di Genova",
+    "url": "https://www.cittametropolitana.genova.it/concorsi",
+    "parole": [
+      "tecnico"
+    ],
+    "data": "03/08/2026"
+  },
+  {
+    "ente": "Università di Genova",
+    "url": "https://unige.it/concorsi",
+    "parole": [
+      "tecnico"
+    ],
+    "data": "03/08/2026"
+  }
+]
