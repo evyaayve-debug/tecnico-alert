@@ -1,3 +1,4 @@
+print("=== STA GIRANDO MONITOR.PY ===")
 import os
 import json
 import requests
