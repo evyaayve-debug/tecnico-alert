@@ -40,6 +40,7 @@ def carica_enti():
         return json.load(f)
 
 
+
 def salva_risultati(dati):
     with open(RISULTATI_FILE, "w", encoding="utf-8") as f:
         json.dump(
@@ -50,12 +51,13 @@ def salva_risultati(dati):
         )
 
 
+
 def classifica(testo):
 
     testo = testo.lower()
 
 
-    # Escludiamo cose poco utili
+    # elimina falsi positivi
     if "mobilità interna" in testo or "mobilita interna" in testo:
         return None
 
@@ -81,7 +83,11 @@ def classifica(testo):
         }
 
 
-    if "concorso" in testo or "selezione" in testo or "interpello" in testo:
+    if (
+        "concorso" in testo
+        or "selezione" in testo
+        or "interpello" in testo
+    ):
         return {
             "tipo": "concorso_generico",
             "priorita": 4
@@ -216,7 +222,6 @@ def main():
         risultati_totali.extend(risultati)
 
 
-    # ordina dal più interessante
     risultati_totali.sort(
         key=lambda x: x["priorita"],
         reverse=True
@@ -233,15 +238,13 @@ def main():
     )
 
 
-    for risultato in risultati_totali:
-
-        print(
-            risultato["priorita"],
-            "-",
-            risultato["ente"],
-            "-",
-            risultato["titolo"]
+    print(
+        json.dumps(
+            risultati_totali,
+            indent=2,
+            ensure_ascii=False
         )
+    )
 
 
 if __name__ == "__main__":
