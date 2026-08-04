@@ -10,8 +10,7 @@
       "interpello"
     ],
     "tecnico": [
-      "funzionario tecnico",
-      "tecnico"
+      "funzionario tecnico"
     ],
     "data": "04/08/2026"
   },
@@ -25,36 +24,7 @@
       "interpello"
     ],
     "tecnico": [
-      "funzionario tecnico",
-      "tecnico"
-    ],
-    "data": "04/08/2026"
-  },
-  {
-    "ente": "Università di Genova",
-    "titolo": "Mobilità esterna del personale tecnico amministrativo",
-    "link": "https://unige.it/concorsi/personale_tecn_amm/Mobilitaesterna",
-    "tipo": "mobilita",
-    "priorita": 2,
-    "bando": [
-      "mobilità"
-    ],
-    "tecnico": [
-      "tecnico"
-    ],
-    "data": "04/08/2026"
-  },
-  {
-    "ente": "Università di Genova",
-    "titolo": "Settore reclutamento e mobilità del personale tecnico amministrativo",
-    "link": "https://rubrica.unige.it/strutture/struttura/100370",
-    "tipo": "mobilita",
-    "priorita": 2,
-    "bando": [
-      "mobilità"
-    ],
-    "tecnico": [
-      "tecnico"
+      "funzionario tecnico"
     ],
     "data": "04/08/2026"
   }
