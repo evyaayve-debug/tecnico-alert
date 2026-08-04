@@ -1,4 +1,5 @@
 import json
+import os
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -7,6 +8,7 @@ from urllib.parse import urljoin
 
 ENTI_FILE = "enti.json"
 RISULTATI_FILE = "risultati.json"
+STORICO_FILE = "storico.json"
 
 
 PAROLE_BANDO = [
@@ -56,14 +58,19 @@ PAROLE_PAGINA_INFORMATIVA = [
 ]
 
 
-def carica_enti():
-    with open(ENTI_FILE, "r", encoding="utf-8") as f:
+def carica_json(nome_file, default):
+
+    if not os.path.exists(nome_file):
+        return default
+
+    with open(nome_file, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
 
-def salva_risultati(dati):
-    with open(RISULTATI_FILE, "w", encoding="utf-8") as f:
+def salva_json(nome_file, dati):
+
+    with open(nome_file, "w", encoding="utf-8") as f:
         json.dump(
             dati,
             f,
@@ -234,11 +241,43 @@ def controlla_pagina(ente):
 
 
 
+def identifica_nuovi(risultati, storico):
+
+    nuovi = []
+
+
+    link_gia_visti = [
+        x["link"]
+        for x in storico
+    ]
+
+
+    for risultato in risultati:
+
+        if risultato["link"] not in link_gia_visti:
+            nuovi.append(risultato)
+
+
+    return nuovi
+
+
+
 def main():
 
     print("Avvio RadarPA")
 
-    enti = carica_enti()
+
+    enti = carica_json(
+        ENTI_FILE,
+        []
+    )
+
+
+    storico = carica_json(
+        STORICO_FILE,
+        []
+    )
+
 
     risultati_totali = []
 
@@ -250,29 +289,52 @@ def main():
         risultati_totali.extend(risultati)
 
 
+
     risultati_totali.sort(
         key=lambda x: x["priorita"],
         reverse=True
     )
 
 
-    salva_risultati(
+    salva_json(
+        RISULTATI_FILE,
         risultati_totali
     )
 
 
+    nuovi = identifica_nuovi(
+        risultati_totali,
+        storico
+    )
+
+
+    if nuovi:
+
+        storico.extend(nuovi)
+
+        salva_json(
+            STORICO_FILE,
+            storico
+        )
+
+
     print(
-        f"Risultati trovati: {len(risultati_totali)}"
+        f"Risultati totali: {len(risultati_totali)}"
+    )
+
+    print(
+        f"Nuovi risultati: {len(nuovi)}"
     )
 
 
     print(
         json.dumps(
-            risultati_totali,
+            nuovi,
             indent=2,
             ensure_ascii=False
         )
     )
+
 
 
 if __name__ == "__main__":
