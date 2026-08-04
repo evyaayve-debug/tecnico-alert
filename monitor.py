@@ -48,17 +48,17 @@ PAROLE_ESCLUSE = [
 
 
 PAROLE_PAGINA_INFORMATIVA = [
-    "settore",
-    "ufficio",
-    "area",
-    "servizio",
-    "struttura"
+    "settore ",
+    "ufficio ",
+    "area ",
+    "servizio ",
+    "struttura "
 ]
 
 
 def carica_enti():
     with open(ENTI_FILE, "r", encoding="utf-8") as f:
-        return json.load()
+        return json.load(f)
 
 
 
@@ -124,9 +124,8 @@ def analizza_link(ente, titolo, url):
     testo = titolo.lower()
 
 
-    # elimina pagine descrittive
     for parola in PAROLE_PAGINA_INFORMATIVA:
-        if testo.startswith(parola + " "):
+        if testo.startswith(parola):
             return None
 
 
@@ -274,7 +273,6 @@ def main():
             ensure_ascii=False
         )
     )
-
 
 
 if __name__ == "__main__":
