@@ -1,36 +1,14 @@
 [
   {
-    "ente": "Comune di Genova",
-    "titolo": "Accessibilità e Barriere Architettoniche",
-    "link": "https://www.comune.genova.it/taxonomy/term/549",
-    "parole": [
-      "architetto"
-    ],
-    "data": "04/08/2026"
-  },
-  {
-    "ente": "Comune di Genova",
-    "titolo": "Edilizia",
-    "link": "https://www.comune.genova.it/tutti-gli-argomenti/edilizia",
-    "parole": [
-      "edilizia"
-    ],
-    "data": "04/08/2026"
-  },
-  {
-    "ente": "Comune di Genova",
-    "titolo": "Urbanistica, Paesaggio e Geologia",
-    "link": "https://www.comune.genova.it/tutti-gli-argomenti/urbanistica",
-    "parole": [
-      "urbanistica"
-    ],
-    "data": "04/08/2026"
-  },
-  {
     "ente": "Città Metropolitana di Genova",
     "titolo": "Interpello rivolto agli idonei dell’elenco formato con atto n.1428/2023 aggiornato con atto n.3129/2024 a seguito di selezione unica ex art. 3 bis D.L. 9 giugno 2021, n. 80,finalizzato alla copertura a tempo pieno e indeterminato di 1 Funzionario tecnico",
-    "link": "https://www.cittametropolitana.genova.it/concorsi/it/concorsi/bandi/interpello-rivolto-agli-idonei-dell%E2%80%99elenco-formato-atto-n14282023-aggiornato-atto",
-    "parole": [
+    "link": "https://www.cittametropolitana.genova.it/it/concorsi/bandi/interpello-rivolto-agli-idonei-dell%E2%80%99elenco-formato-atto-n14282023-aggiornato-atto",
+    "bando": [
+      "selezione",
+      "interpello"
+    ],
+    "tecnico": [
+      "funzionario tecnico",
       "tecnico"
     ],
     "data": "04/08/2026"
@@ -38,17 +16,12 @@
   {
     "ente": "Città Metropolitana di Genova",
     "titolo": "Interpello per n. 1 funzionario tecnico a tempo determinato, rivolto agli idonei dell’elenco di Città Metropolitana di Genova, approvato con atto dirigenziale n. 1428 del 23 giugno 2023 e aggiornato con atto dirigenziale n. 3129 del 2 dicembre 2024",
-    "link": "https://www.cittametropolitana.genova.it/concorsi/it/concorsi/bandi/interpello-n-1-funzionario-tecnico-tempo-determinato-rivolto-agli-idonei-dell%E2%80%99elenco",
-    "parole": [
-      "tecnico"
+    "link": "https://www.cittametropolitana.genova.it/it/concorsi/bandi/interpello-n-1-funzionario-tecnico-tempo-determinato-rivolto-agli-idonei-dell%E2%80%99elenco",
+    "bando": [
+      "interpello"
     ],
-    "data": "04/08/2026"
-  },
-  {
-    "ente": "Università di Genova",
-    "titolo": "Concorsi per personale tecnico amministrativo",
-    "link": "https://unige.it/concorsi/concorsi/personale_tecn_amm/",
-    "parole": [
+    "tecnico": [
+      "funzionario tecnico",
       "tecnico"
     ],
     "data": "04/08/2026"
@@ -56,8 +29,11 @@
   {
     "ente": "Università di Genova",
     "titolo": "Mobilità esterna del personale tecnico amministrativo",
-    "link": "https://unige.it/concorsi/concorsi/personale_tecn_amm/Mobilitaesterna",
-    "parole": [
+    "link": "https://unige.it/concorsi/personale_tecn_amm/Mobilitaesterna",
+    "bando": [
+      "mobilità"
+    ],
+    "tecnico": [
       "tecnico"
     ],
     "data": "04/08/2026"
@@ -66,7 +42,10 @@
     "ente": "Università di Genova",
     "titolo": "Mobilità interna del personale tecnico amministrativo",
     "link": "https://unige.it/concorsi/personale_tecn_amm/mobilita-interna",
-    "parole": [
+    "bando": [
+      "mobilità"
+    ],
+    "tecnico": [
       "tecnico"
     ],
     "data": "04/08/2026"
@@ -75,16 +54,10 @@
     "ente": "Università di Genova",
     "titolo": "Settore reclutamento e mobilità del personale tecnico amministrativo",
     "link": "https://rubrica.unige.it/strutture/struttura/100370",
-    "parole": [
-      "tecnico"
+    "bando": [
+      "mobilità"
     ],
-    "data": "04/08/2026"
-  },
-  {
-    "ente": "Università di Genova",
-    "titolo": "Personale tecnico amministrativo",
-    "link": "#personale-tecnico-amministrativo",
-    "parole": [
+    "tecnico": [
       "tecnico"
     ],
     "data": "04/08/2026"
