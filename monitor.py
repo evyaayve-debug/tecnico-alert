@@ -27,17 +27,38 @@ PAROLE_TECNICHE = [
     "ingegnere",
     "funzionario tecnico",
     "istruttore tecnico",
-    "tecnico",
+    "istruttore direttivo tecnico",
     "lavori pubblici",
     "edilizia",
     "patrimonio",
-    "infrastrutture"
+    "infrastrutture",
+    "manutenzione",
+    "impianti",
+    "urbanistica"
+]
+
+
+PAROLE_ESCLUSE = [
+    "tecnico amministrativo",
+    "personale tecnico amministrativo",
+    "area tecnico amministrativa",
+    "settore tecnico amministrativo",
+    "ufficio tecnico amministrativo"
+]
+
+
+PAROLE_PAGINA_INFORMATIVA = [
+    "settore",
+    "ufficio",
+    "area",
+    "servizio",
+    "struttura"
 ]
 
 
 def carica_enti():
     with open(ENTI_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+        return json.load()
 
 
 
@@ -57,9 +78,9 @@ def classifica(testo):
     testo = testo.lower()
 
 
-    # elimina falsi positivi
-    if "mobilità interna" in testo or "mobilita interna" in testo:
-        return None
+    for parola in PAROLE_ESCLUSE:
+        if parola in testo:
+            return None
 
 
     if "tempo pieno e indeterminato" in testo or "tempo indeterminato" in testo:
@@ -94,16 +115,24 @@ def classifica(testo):
         }
 
 
-    return {
-        "tipo": "non_classificato",
-        "priorita": 1
-    }
+    return None
 
 
 
 def analizza_link(ente, titolo, url):
 
     testo = titolo.lower()
+
+
+    # elimina pagine descrittive
+    for parola in PAROLE_PAGINA_INFORMATIVA:
+        if testo.startswith(parola + " "):
+            return None
+
+
+    for parola in PAROLE_ESCLUSE:
+        if parola in testo:
+            return None
 
 
     parole_bando = [
@@ -245,6 +274,7 @@ def main():
             ensure_ascii=False
         )
     )
+
 
 
 if __name__ == "__main__":
