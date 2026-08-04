@@ -50,34 +50,90 @@ def salva_risultati(dati):
         )
 
 
+def classifica(testo):
+
+    testo = testo.lower()
+
+
+    # Escludiamo cose poco utili
+    if "mobilità interna" in testo or "mobilita interna" in testo:
+        return None
+
+
+    if "tempo pieno e indeterminato" in testo or "tempo indeterminato" in testo:
+        return {
+            "tipo": "tempo_indeterminato",
+            "priorita": 5
+        }
+
+
+    if "tempo determinato" in testo:
+        return {
+            "tipo": "tempo_determinato",
+            "priorita": 3
+        }
+
+
+    if "mobilità" in testo or "mobilita" in testo:
+        return {
+            "tipo": "mobilita",
+            "priorita": 2
+        }
+
+
+    if "concorso" in testo or "selezione" in testo or "interpello" in testo:
+        return {
+            "tipo": "concorso_generico",
+            "priorita": 4
+        }
+
+
+    return {
+        "tipo": "non_classificato",
+        "priorita": 1
+    }
+
+
+
 def analizza_link(ente, titolo, url):
 
     testo = titolo.lower()
 
-    parole_bando_trovate = [
+
+    parole_bando = [
         p for p in PAROLE_BANDO
         if p in testo
     ]
 
-    parole_tecniche_trovate = [
+
+    parole_tecniche = [
         p for p in PAROLE_TECNICHE
         if p in testo
     ]
 
 
-    if parole_bando_trovate and parole_tecniche_trovate:
-
-        return {
-            "ente": ente["nome"],
-            "titolo": titolo,
-            "link": url,
-            "bando": parole_bando_trovate,
-            "tecnico": parole_tecniche_trovate,
-            "data": datetime.now().strftime("%d/%m/%Y")
-        }
+    if not parole_bando or not parole_tecniche:
+        return None
 
 
-    return None
+    categoria = classifica(testo)
+
+
+    if categoria is None:
+        return None
+
+
+    return {
+        "ente": ente["nome"],
+        "titolo": titolo,
+        "link": url,
+        "tipo": categoria["tipo"],
+        "priorita": categoria["priorita"],
+        "bando": parole_bando,
+        "tecnico": parole_tecniche,
+        "data": datetime.now().strftime("%d/%m/%Y")
+    }
+
 
 
 def controlla_pagina(ente):
@@ -85,6 +141,7 @@ def controlla_pagina(ente):
     print(f"Controllo: {ente['nome']}")
 
     risultati = []
+
 
     try:
 
@@ -159,6 +216,13 @@ def main():
         risultati_totali.extend(risultati)
 
 
+    # ordina dal più interessante
+    risultati_totali.sort(
+        key=lambda x: x["priorita"],
+        reverse=True
+    )
+
+
     salva_risultati(
         risultati_totali
     )
@@ -172,6 +236,8 @@ def main():
     for risultato in risultati_totali:
 
         print(
+            risultato["priorita"],
+            "-",
             risultato["ente"],
             "-",
             risultato["titolo"]
