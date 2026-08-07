@@ -223,6 +223,55 @@ def identifica_nuovi(risultati, storico):
     return nuovi
 def main():
 
+  def invia_telegram(messaggi):
+
+    token = os.environ.get("TELEGRAM_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+
+    if not token or not chat_id:
+        print("Telegram non configurato")
+        return
+
+    testo = "🚨 Nuovi bandi tecnici trovati:\n\n"
+
+    for messaggio in messaggi:
+
+        testo += (
+            f"🏛 {messaggio['ente']}\n"
+            f"📌 {messaggio['titolo']}\n"
+            f"🔗 {messaggio['link']}\n\n"
+        )
+
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+
+    try:
+
+        risposta = requests.post(
+            url,
+            data={
+                "chat_id": chat_id,
+                "text": testo
+            },
+            timeout=10
+        )
+
+        if risposta.status_code == 200:
+            print("Notifica Telegram inviata")
+
+        else:
+            print(
+                f"Errore Telegram: {risposta.text}"
+            )
+
+    except Exception as e:
+
+        print(
+            f"Errore invio Telegram: {e}"
+        )
+
+
+def main():
+
     print("Avvio RadarPA")
 
     enti = carica_json(
@@ -266,6 +315,9 @@ def main():
             STORICO_FILE,
             storico
         )
+
+        invia_telegram(nuovi)
+
 
     print(
         f"Risultati totali: {len(risultati_totali)}"
