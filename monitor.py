@@ -5,11 +5,9 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from urllib.parse import urljoin
 
-
 ENTI_FILE = "enti.json"
 RISULTATI_FILE = "risultati.json"
 STORICO_FILE = "storico.json"
-
 
 PAROLE_BANDO = [
     "concorso",
@@ -22,7 +20,6 @@ PAROLE_BANDO = [
     "avviso",
     "graduatoria"
 ]
-
 
 PAROLE_TECNICHE = [
     "architetto",
@@ -39,7 +36,6 @@ PAROLE_TECNICHE = [
     "urbanistica"
 ]
 
-
 PAROLE_ESCLUSE = [
     "tecnico amministrativo",
     "personale tecnico amministrativo",
@@ -47,7 +43,6 @@ PAROLE_ESCLUSE = [
     "settore tecnico amministrativo",
     "ufficio tecnico amministrativo"
 ]
-
 
 PAROLE_PAGINA_INFORMATIVA = [
     "settore ",
@@ -67,7 +62,6 @@ def carica_json(nome_file, default):
         return json.load(f)
 
 
-
 def salva_json(nome_file, dati):
 
     with open(nome_file, "w", encoding="utf-8") as f:
@@ -79,16 +73,13 @@ def salva_json(nome_file, dati):
         )
 
 
-
 def classifica(testo):
 
     testo = testo.lower()
 
-
     for parola in PAROLE_ESCLUSE:
         if parola in testo:
             return None
-
 
     if "tempo pieno e indeterminato" in testo or "tempo indeterminato" in testo:
         return {
@@ -96,20 +87,17 @@ def classifica(testo):
             "priorita": 5
         }
 
-
     if "tempo determinato" in testo:
         return {
             "tipo": "tempo_determinato",
             "priorita": 3
         }
 
-
     if "mobilità" in testo or "mobilita" in testo:
         return {
             "tipo": "mobilita",
             "priorita": 2
         }
-
 
     if (
         "concorso" in testo
@@ -121,48 +109,36 @@ def classifica(testo):
             "priorita": 4
         }
 
-
     return None
-
-
-
 def analizza_link(ente, titolo, url):
 
     testo = titolo.lower()
-
 
     for parola in PAROLE_PAGINA_INFORMATIVA:
         if testo.startswith(parola):
             return None
 
-
     for parola in PAROLE_ESCLUSE:
         if parola in testo:
             return None
-
 
     parole_bando = [
         p for p in PAROLE_BANDO
         if p in testo
     ]
 
-
     parole_tecniche = [
         p for p in PAROLE_TECNICHE
         if p in testo
     ]
 
-
     if not parole_bando or not parole_tecniche:
         return None
 
-
     categoria = classifica(testo)
-
 
     if categoria is None:
         return None
-
 
     return {
         "ente": ente["nome"],
@@ -176,13 +152,11 @@ def analizza_link(ente, titolo, url):
     }
 
 
-
 def controlla_pagina(ente):
 
     print(f"Controllo: {ente['nome']}")
 
     risultati = []
-
 
     try:
 
@@ -194,12 +168,10 @@ def controlla_pagina(ente):
             timeout=20
         )
 
-
         soup = BeautifulSoup(
             risposta.text,
             "html.parser"
         )
-
 
         for link in soup.find_all("a", href=True):
 
@@ -208,16 +180,13 @@ def controlla_pagina(ente):
                 strip=True
             )
 
-
             if not titolo:
                 continue
-
 
             url = urljoin(
                 ente["url"],
                 link["href"]
             )
-
 
             risultato = analizza_link(
                 ente,
@@ -225,10 +194,8 @@ def controlla_pagina(ente):
                 url
             )
 
-
             if risultato:
                 risultati.append(risultato)
-
 
     except Exception as e:
 
@@ -236,51 +203,39 @@ def controlla_pagina(ente):
             f"Errore {ente['nome']}: {e}"
         )
 
-
     return risultati
-
 
 
 def identifica_nuovi(risultati, storico):
 
     nuovi = []
 
-
     link_gia_visti = [
         x["link"]
         for x in storico
     ]
-
 
     for risultato in risultati:
 
         if risultato["link"] not in link_gia_visti:
             nuovi.append(risultato)
 
-
     return nuovi
-
-
-
 def main():
 
     print("Avvio RadarPA")
-
 
     enti = carica_json(
         ENTI_FILE,
         []
     )
 
-
     storico = carica_json(
         STORICO_FILE,
         []
     )
 
-
     risultati_totali = []
-
 
     for ente in enti:
 
@@ -288,25 +243,20 @@ def main():
 
         risultati_totali.extend(risultati)
 
-
-
     risultati_totali.sort(
         key=lambda x: x["priorita"],
         reverse=True
     )
-
 
     salva_json(
         RISULTATI_FILE,
         risultati_totali
     )
 
-
     nuovi = identifica_nuovi(
         risultati_totali,
         storico
     )
-
 
     if nuovi:
 
@@ -317,7 +267,6 @@ def main():
             storico
         )
 
-
     print(
         f"Risultati totali: {len(risultati_totali)}"
     )
@@ -326,7 +275,6 @@ def main():
         f"Nuovi risultati: {len(nuovi)}"
     )
 
-
     print(
         json.dumps(
             nuovi,
@@ -334,7 +282,6 @@ def main():
             ensure_ascii=False
         )
     )
-
 
 
 if __name__ == "__main__":
