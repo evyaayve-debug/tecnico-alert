@@ -221,9 +221,9 @@ def identifica_nuovi(risultati, storico):
             nuovi.append(risultato)
 
     return nuovi
-def main():
 
-  def invia_telegram(messaggi):
+
+def invia_telegram(messaggi):
 
     token = os.environ.get("TELEGRAM_TOKEN")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID")
@@ -271,6 +271,72 @@ def main():
 
 
 def main():
+
+    print("Avvio RadarPA")
+
+    enti = carica_json(
+        ENTI_FILE,
+        []
+    )
+
+    storico = carica_json(
+        STORICO_FILE,
+        []
+    )
+
+    risultati_totali = []
+
+    for ente in enti:
+
+        risultati = controlla_pagina(ente)
+
+        risultati_totali.extend(risultati)
+
+    risultati_totali.sort(
+        key=lambda x: x["priorita"],
+        reverse=True
+    )
+
+    salva_json(
+        RISULTATI_FILE,
+        risultati_totali
+    )
+
+    nuovi = identifica_nuovi(
+        risultati_totali,
+        storico
+    )
+
+    if nuovi:
+
+        storico.extend(nuovi)
+
+        salva_json(
+            STORICO_FILE,
+            storico
+        )
+
+        invia_telegram(nuovi)
+
+    print(
+        f"Risultati totali: {len(risultati_totali)}"
+    )
+
+    print(
+        f"Nuovi risultati: {len(nuovi)}"
+    )
+
+    print(
+        json.dumps(
+            nuovi,
+            indent=2,
+            ensure_ascii=False
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()
 
     print("Avvio RadarPA")
 
